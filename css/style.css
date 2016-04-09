@@ -1,0 +1,118 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+html,body,table{
+  width: 100%;
+  height: 100%;
+}
+body{
+  background-color: rgb(233, 236, 231);
+}
+.container{
+  width: 40%;
+  height: 70%;
+  position: absolute;
+  margin: auto;
+  top: 0;right: 0;bottom: 0;left: 0;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0px 0px 50px rgb(205, 208, 203);;
+}
+/*标题头部分样式*/
+.title{
+  width: 100%;
+  flex: 0.5;
+  background-color: rgb(240, 243, 248);
+}
+#control-bar{
+  padding: 2% 2%;
+}
+.btn{
+  display: inline;
+}
+.context{
+  width: 100%;
+  flex: 5;
+  display: flex;
+  flex-direction: row;
+}
+/*月份图片*/
+.monthImg{
+  flex: 4;
+  background-size: 100% 100%;
+}
+/*日历部分样式*/
+.calendar{
+  flex: 2;
+  border-right: 1px solid rgb(240, 243, 248);
+  background-color: #fff;
+}
+table{
+  border-collapse: collapse;
+}
+td{
+  padding: 2%;
+  text-align: center;
+}
+.lunar{
+  font-size: 5px;
+}
+th{
+  padding: 1%;
+}
+td.havaDate:hover{
+  animation:alp 2s infinite;
+}
+@keyframes alp{
+  0% {background-color: rgba(254, 239, 231, 0.5);}
+  50% {background-color: rgba(254, 239, 231, 1);}
+  100% {background-color: rgba(254, 239, 231, 0.5);}
+}
+/*右侧选择区样式*/
+.choose{
+  flex: 1;
+  text-align: center;
+  background-color: #fff;
+}
+.choose>p{
+  margin-top: 5%;
+}
+.choose>h1{
+  margin: 10%;
+}
+
+/*兼容手机样式*/
+@media only screen and (max-device-width: 768px) {
+  .container{
+    width: 90%;
+    height: 90%;
+  }
+  .context{
+    flex-direction: column;
+  }
+  .calendar{
+    border-right: none;
+    border-bottom: 1px solid rgb(240, 243, 248);
+  }
+  .time{
+    display: block;
+  }
+  #tit1{
+    padding-left: 26%;
+  }
+  #theDay{
+    float: left;
+    margin-top: -2%;
+    font-size: 60px;
+  }
+  .title{
+    flex: 1;
+  }
+  .monthImg{
+    flex: 4;
+  }
+  .context{
+    flex: 10;
+  }
+}
