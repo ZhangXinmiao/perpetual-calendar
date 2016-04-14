@@ -20,7 +20,7 @@ function calElement(year, month, date, day){
     this.year = year;
     this.month = month;
     this.date = date;
-    this.day = day;
+    this.day = new Date(year, month, date).getDay();
 }
 //获取今天的时间信息
 function getToday(){
@@ -104,7 +104,6 @@ function renderCal(year, month){
     items += "</tr>";
   }
   cal.innerHTML = items;
-  console.log(122,tableTh);
   for(var k = 0; k < tableTh.length; k++){
     tableTh[k].style.color = Color[month];
   }
@@ -168,18 +167,24 @@ function delClickDate(){
   };
 }
 
+
+
 var convert = new LunarSolarConverter();
 solar = new Solar();
 lunarDateToday = convert.solarToLunar({solarYear:getToday().year, solarMonth:getToday().month+1, solarDay:getToday().date});
 
 
+var todayMonth = getToday().month,
+    todayYear = getToday().year;
+theYear[todayYear-1902].selected = true;
+theMonth[todayMonth].selected = true;
 //生成钟表
 startTime();
 setInterval(startTime, 1000);
 //当年月份发生变化时，调用渲染表格函数
-renderCal(getToday().year, getToday().month);
+renderCal(todayYear, todayMonth);
 renderChoose(getToday(), lunarDateToday);
-renderMonth(getToday().month);
+renderMonth(todayMonth);
 theYear.onchange = function(){
   renderCal(getTheYear(), getTheMonth());
 };
@@ -191,7 +196,7 @@ theMonth.onchange = function(){
 };
 btnToday.onclick = function(){
   renderChoose(getToday(), lunarDateToday);
-  renderCal(getToday().year, getToday().month);
-  renderMonth(getToday().month);
+  renderCal(todayYear, todayMonth);
+  renderMonth(todayMonth);
 };
 delClickDate();
